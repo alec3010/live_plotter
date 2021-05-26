@@ -1,6 +1,9 @@
 #include "plotter.h"
+#include "ui_plotter.h"
 
-plotter::plotter(QWidget *parent) : QWidget(parent)
+Plotter::Plotter(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::Plotter)
 {
 
 }

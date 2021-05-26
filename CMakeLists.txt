@@ -9,14 +9,18 @@ set(SOURCE_FILES
     qcustomplot.cpp
     mainwindow.cpp
     main.cpp
+    plotter.cpp
+
     )
 
 set(HEADER_FILES
     mainwindow.h
-    qcustomplot.h)
+    qcustomplot.h
+    plotter.h)
 
 set(UI_FILES
-    mainwindow.ui)
+    mainwindow.ui
+    plotter.ui)
 
 ##################CMAKE CONFIGURATION#######################
 
@@ -33,15 +37,11 @@ if(CMAKE_VERSION VERSION_LESS "3.7.0")
     set(CMAKE_INCLUDE_CURRENT_DIR ON)
 endif()
 
-find_package(Qt5 COMPONENTS Core Widgets Gui REQUIRED)
+find_package(Qt5 COMPONENTS Core Widgets Gui PrintSupport REQUIRED)
 
-set(QT_LIBS Qt5::Widgets Qt5::Core)
+set(QT_LIBS Qt5::Widgets Qt5::Core Qt5::PrintSupport)
 
-add_executable(Plotter
-    mainwindow.ui
-    mainwindow.cpp
-    main.cpp
+add_executable(Plotter ${SOURCE_FILES} ${HEADER_FILES} ${UI_FILES})
 
-)
 
 target_link_libraries(Plotter ${QT_LIBS})

@@ -3,11 +3,18 @@
 
 #include <QWidget>
 
-class plotter : public QWidget
+namespace Ui {
+class Plotter;
+}
+
+class Plotter : public QWidget
 {
-    Q_OBJECT
+Q_OBJECT
+private:
+    Ui::Plotter *ui;
+
 public:
-    explicit plotter(QWidget *parent = nullptr);
+    explicit Plotter(QWidget *parent = nullptr);
 
 signals:
 
