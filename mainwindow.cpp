@@ -5,11 +5,12 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    plotter(new Plotter(this))
 {
     ui->setupUi(this);
 
-    Plotter* plotter = new Plotter(this);
+
 
     ui->layout->addWidget(plotter);
 }

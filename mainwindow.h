@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+#include "plotter.h"
+
 namespace Ui {
 class MainWindow;
 }
@@ -17,6 +19,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    Plotter* plotter;
 };
 
 #endif // MAINWINDOW_H
