@@ -41,7 +41,7 @@ Plotter::Plotter(QWidget *parent) :
     connect(customPlot->xAxis, SIGNAL(rangeChanged(QCPRange)), customPlot->xAxis2, SLOT(setRange(QCPRange)));
     connect(customPlot->yAxis, SIGNAL(rangeChanged(QCPRange)), customPlot->yAxis2, SLOT(setRange(QCPRange)));
 
-    //
+    // connect visibility checkboxes to plotter
     connect(dataFieldTreeWidget, SIGNAL(itemChanged(QTreeWidgetItem*, int)),this, SLOT(on_visibilityChanged(QTreeWidgetItem*, int)));
 
 
@@ -80,9 +80,24 @@ void Plotter::addPlot(QString name)
 
 void Plotter::on_visibilityChanged(QTreeWidgetItem* item, int column)
 {
-    bool checked = (item->checkState(column) == Qt::Checked) ? true : false;
-    customPlot->graph(graphIndicesMap[item->text(0)])->setVisible(checked);
-    std::cout << "Doing Something" << std::endl;
+    if(column == 1)
+    {
+        bool checked = (item->checkState(column) == Qt::Checked) ? true : false;
+        customPlot->graph(graphIndicesMap[item->text(0)])->setVisible(checked);
+    }
+    else if(column == 2)
+    {
+        //do nothing for now. later first derivative
+    }
+    else if(column == 3)
+    {
+        //do nothing for now. later second derivative
+    }
+    else
+    {
+        std::cout << "columns do not match up" << std::endl;
+    }
+
 }
 
 
