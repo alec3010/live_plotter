@@ -10,6 +10,21 @@
 #include <QColor>
 #include <QMap>
 
+#include <QSharedPointer>
+
+typedef struct
+{ //Each Graph has some information attached to it
+    bool showVal; //does the user want to see the values
+    int valueIndex; //which index holds the value-Graph
+    bool showFirstOrderDerivative; //does the user want to see the first order derivative
+    int firstOrderIndex; //which index holds the graph with the first order derivative
+    bool showScndOrderDerivative; //does the user want to see the second order derivative
+    int scndOrderIndex; // index for second order derivative
+} Preferences;
+
+#define INIT_PREFERENCES(P) Preferences P = {.showVal = true, .valueIndex = 0, .showFirstOrderDerivative = false, .firstOrderIndex = 0, .showScndOrderDerivative = false, .scndOrderIndex = 0}
+
+
 namespace Ui {
 class Plotter;
 }
@@ -24,13 +39,25 @@ private:
     QStatusBar* statusBar;
     QTreeWidget* dataFieldTreeWidget;
     QVBoxLayout* vlayout;
-    QMap<QString, int> graphIndicesMap;
+
+    QMap<QString, Preferences> graphPreferenceMap;
+    bool calcDerivative = false;
+    bool isFirstValue = true;
+    int loopCounter = 0;
+
+    double previousKey;
+
+
+
 
 public:
     explicit Plotter(QWidget *parent = nullptr);
 
 private:
     void addPlot(QString name);
+    double approximateFirstOrderDerivative(QSharedPointer< QCPGraphDataContainer > data);
+    QSharedPointer <QCPGraphDataContainer> approximateSecondOrderDerivative(QSharedPointer< QCPGraphDataContainer > data);
+
 
 signals:
 
