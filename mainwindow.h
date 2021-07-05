@@ -18,8 +18,12 @@ public:
     ~MainWindow();
 
 private:
-    Ui::MainWindow *ui;
+    Ui::MainWindow *ui_;
     Plotter* plotter;
+
+
+private slots:
+
 };
 
 #endif // MAINWINDOW_H

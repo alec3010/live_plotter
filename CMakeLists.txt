@@ -9,6 +9,7 @@ set(SOURCE_FILES
     qcustomplot.cpp
     mainwindow.cpp
     main.cpp
+    plot.cpp
     plotter.cpp
 
     )
@@ -16,10 +17,12 @@ set(SOURCE_FILES
 set(HEADER_FILES
     mainwindow.h
     qcustomplot.h
+    plot.h
     plotter.h)
 
 set(UI_FILES
     mainwindow.ui
+    plot.ui
     plotter.ui)
 
 ##################CMAKE CONFIGURATION#######################

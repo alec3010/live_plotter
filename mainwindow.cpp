@@ -5,17 +5,19 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow),
+    ui_(new Ui::MainWindow),
     plotter(new Plotter(this))
+
 {
-    ui->setupUi(this);
+    ui_->setupUi(this);
+    ui_->layout->addWidget(plotter);
 
-
-
-    ui->layout->addWidget(plotter);
 }
 
 MainWindow::~MainWindow()
 {
-    delete ui;
+    delete ui_;
 }
+
+
+
